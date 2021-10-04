@@ -1,0 +1,222 @@
+:root,
+:root[color-theme='light'] {
+  /* color */
+  --background: #f8f9fa;
+  --mainColor: #212529;
+  --shadowColor: #ced4da;
+  --borderColor: #adb5bd;
+
+  /* font */
+  --font-size: 16px;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+}
+
+:root[color-theme='dark'] {
+  --background: #212529;
+  --mainColor: #f8f9fa;
+  --shadowColor: #868e96;
+  --borderColor: #ced4da;
+}
+
+/* body */
+body {
+  height: 100vh;
+  font-size: var(--font-size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* container */
+.container {
+  background-color: var(--background);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  font-family: var(--font-poppins);
+}
+
+/* header */
+.header {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  /* border: 2px solid wheat; */
+}
+
+.meatballs {
+  font-size: 20px;
+  padding: 3px;
+  margin-left: 12px;
+}
+
+.stop {
+  padding: 3px;
+  margin-right: 12px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--mainColor);
+}
+
+/* navigation bar */
+.nav-item {
+  list-style: none;
+}
+
+.header > .nav-bar-flex {
+  display: flex;
+}
+
+.nav-bar {
+  display: none;
+  border: 1px solid var(--borderColor);
+  box-shadow: 0px 0px 2px 0px var(--shadowColor);
+  border-radius: 5px;
+  position: absolute;
+  top: 50px;
+  padding: 15px 20px;
+  right: 0;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-bar > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-family: var(--font-roboto);
+  font-size: var(--font-size);
+  color: var(--mainColor);
+}
+.minBtn:disabled {
+  color: var(--shadowColor);
+}
+
+/* timer */
+.timer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  font-size: 20vh;
+  font-weight: 600;
+  box-sizing: border-box;
+  font-family: var(--font-roboto);
+  color: var(--mainColor);
+}
+
+/* button */
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-poppins);
+}
+
+.btn > button {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--borderColor);
+  border-radius: 5px;
+  width: 80px;
+  background-color: transparent;
+  font-size: var(--font-size);
+  height: 36px;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  color: var(--mainColor);
+}
+
+.start:hover,
+.pause:hover {
+  box-shadow: 0px 0px 3px 1px var(--shadowColor);
+}
+
+.pause {
+  visibility: hidden;
+  display: flex;
+  position: absolute;
+  top: -36px;
+}
+
+/* light mode */
+.switch-button {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 30px;
+  /* border: 2px solid darkkhaki; */
+}
+
+.switch-button input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.onoff-switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background-color: #f2d522;
+  box-shadow: inset 1px 4px 1px #e3ae56;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.onoff-switch:before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  content: '';
+  font-size: 13px;
+  padding-left: 4px;
+  padding-bottom: 1px;
+  box-sizing: border-box;
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.switch-button input:checked + .onoff-switch {
+  background-color: #ccc;
+  box-shadow: inset 1px 5px 1px #999;
+}
+
+.switch-button input:checked + .onoff-switch:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+  padding-left: 4px;
+  box-sizing: border-box;
+}
