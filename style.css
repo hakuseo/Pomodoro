@@ -107,6 +107,7 @@ body {
   font-size: var(--font-size);
   color: var(--mainColor);
 }
+
 .minBtn:disabled {
   color: var(--shadowColor);
 }
@@ -116,11 +117,15 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  font-size: 20vh;
-  font-weight: 600;
+
   box-sizing: border-box;
   font-family: var(--font-roboto);
   color: var(--mainColor);
+}
+
+.countdown {
+  font-size: 20vh;
+  font-weight: 600;
 }
 
 /* button */
