@@ -16,6 +16,11 @@ const currentTime = 'currentTimeSet';
 let currentTimeSet = [];
 let startTimeSet = [{ time: 30, timeSec: 1800 }];
 
+if (startTimeSet.time === undefined) {
+  saveTime();
+}
+// countdownEl.innerText = `${startTimeSet.time}:00`;
+
 function saveTime() {
   localStorage.setItem(currentTime, JSON.stringify(currentTimeSet));
   localStorage.setItem(startTime, JSON.stringify(startTimeSet));
