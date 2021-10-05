@@ -25,6 +25,11 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="./main.js" defer></script>
     <script
       src="https://kit.fontawesome.com/552326acc1.js"
@@ -33,26 +38,35 @@
   </head>
   <body>
     <div class="container">
+      <!-- header -->
       <header class="header">
-        <button class="stop">
-          <i class="fas fa-undo-alt"></i>
-        </button>
         <label class="switch-button">
           <input type="checkbox" class="mode-check" />
           <span class="onoff-switch"> </span>
         </label>
+        <button class="stop">
+          <i class="fas fa-undo-alt"></i>
+        </button>
         <div class="meatballs">
           <i class="fas fa-ellipsis-v"></i>
         </div>
-        <ul class="nav-bar">
-          <button id="15" class="minBtn">15min</button>
-          <button id="30" class="minBtn">30min</button>
-          <button id="45" class="minBtn">45min</button>
-        </ul>
       </header>
-      <div class="timer">
-        <div class="countdown"></div>
-      </div>
+
+      <!-- navigation -->
+      <nav class="nav">
+        <ul class="nav-bar">
+          <button id="15" class="minBtn">15분</button>
+          <button id="30" class="minBtn">30분</button>
+          <button id="45" class="minBtn">45분</button>
+        </ul>
+      </nav>
+
+      <!-- section -->
+      <section class="section">
+        <section class="countdown"></section>
+      </section>
+
+      <!-- button -->
       <div class="btn">
         <button class="start">start</button>
         <button class="pause">pause</button>

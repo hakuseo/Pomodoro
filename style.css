@@ -7,9 +7,11 @@
   --borderColor: #adb5bd;
 
   /* font */
+  --icon-size: 22px;
   --font-size: 16px;
   --font-poppins: 'Poppins', sans-serif;
   --font-roboto: 'Roboto', sans-serif;
+  --font-spoqa: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
 :root[color-theme='dark'] {
@@ -21,90 +23,86 @@
 
 /* body */
 body {
+  font-family: var(--font-poppins);
   height: 100vh;
-  font-size: var(--font-size);
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  background-color: var(--background);
 }
 
 /* container */
 .container {
-  background-color: var(--background);
+  margin: 30px;
   width: 100%;
-  height: 100%;
+  max-width: 1000px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
-  padding: 30px 40px;
-  box-sizing: border-box;
-  font-family: var(--font-poppins);
+  background-color: var(--background);
+  position: relative;
 }
 
 /* header */
 .header {
   display: flex;
-  max-width: 1000px;
-  width: 100%;
-  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
-  /* border: 2px solid wheat; */
-}
-
-.meatballs {
-  font-size: 20px;
-  padding: 3px;
-  margin-left: 12px;
+  width: 100%;
 }
 
 .stop {
-  padding: 3px;
-  margin-right: 12px;
   border: none;
   background-color: transparent;
-  font-size: 20px;
+  font-size: var(--icon-size);
   cursor: pointer;
+  padding: 0 10px;
+  padding-left: 20px;
   color: var(--mainColor);
+  box-sizing: border-box;
+}
+
+.meatballs {
+  font-size: var(--icon-size);
+  padding: 0 10px;
+  padding-top: 2px;
+  box-sizing: border-box;
 }
 
 /* navigation bar */
-.nav-item {
-  list-style: none;
+.nav {
+  position: absolute;
+  top: 50px;
+  right: 0;
 }
 
-.header > .nav-bar-flex {
-  display: flex;
+.nav > .nav-bar-block {
+  display: block;
 }
 
 .nav-bar {
   display: none;
-  border: 1px solid var(--borderColor);
-  box-shadow: 0px 0px 2px 0px var(--shadowColor);
-  border-radius: 5px;
-  position: absolute;
-  top: 50px;
-  padding: 15px 20px;
-  right: 0;
+  padding: 10px 16px;
   box-sizing: border-box;
+  border: 1px solid var(--borderColor);
+  box-shadow: 0px 0px 3px 1px var(--shadowColor);
+  border-radius: 5px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-spoqa);
 }
 
 .nav-bar > button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  margin-top: 1px;
+  padding: 4px 10px;
   box-sizing: border-box;
   cursor: pointer;
   border: none;
   background-color: transparent;
-  font-family: var(--font-roboto);
   font-size: var(--font-size);
+  font-weight: 500;
   color: var(--mainColor);
 }
 
@@ -112,44 +110,43 @@ body {
   color: var(--shadowColor);
 }
 
-/* timer */
-.timer {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-
-  box-sizing: border-box;
+/* section */
+.section {
+  font-weight: 600;
   font-family: var(--font-roboto);
-  color: var(--mainColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.countdown {
-  font-size: 20vh;
-  font-weight: 600;
+.section > .countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12vh;
+  font-size: 12vw;
+  color: var(--mainColor);
 }
 
 /* button */
-
 .btn {
+  font-family: var(--font-poppins);
   display: flex;
   flex-direction: column;
-  font-family: var(--font-poppins);
+  align-items: center;
+  position: relative;
 }
 
 .btn > button {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
   border: 1px solid var(--borderColor);
   border-radius: 5px;
-  width: 80px;
   background-color: transparent;
   font-size: var(--font-size);
-  height: 36px;
   font-family: var(--font-poppins);
   font-weight: 500;
   color: var(--mainColor);
+  width: 80px;
+  height: 36px;
 }
 
 .start:hover,
@@ -159,9 +156,7 @@ body {
 
 .pause {
   visibility: hidden;
-  display: flex;
   position: absolute;
-  top: -36px;
 }
 
 /* light mode */
@@ -224,4 +219,18 @@ body {
   transform: translateX(24px);
   padding-left: 4px;
   box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .section > .countdown {
+    font-size: 20vh;
+    font-size: 20vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1230px) {
+  .section > .countdown {
+    font-size: 16vh;
+    font-size: 16vw;
+  }
 }

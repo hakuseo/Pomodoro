@@ -1,4 +1,3 @@
-const timer = document.querySelector('.timer');
 const startBtn = document.querySelector('.start');
 const pauseBtn = document.querySelector('.pause');
 const stopBtn = document.querySelector('.stop');
@@ -14,12 +13,7 @@ const startTime = 'startTimeSet';
 const currentTime = 'currentTimeSet';
 
 let currentTimeSet = [];
-let startTimeSet = [{ time: 30, timeSec: 1800 }];
-
-if (startTimeSet.time === undefined) {
-  saveTime();
-}
-// countdownEl.innerText = `${startTimeSet.time}:00`;
+let startTimeSet = [];
 
 function saveTime() {
   localStorage.setItem(currentTime, JSON.stringify(currentTimeSet));
@@ -27,7 +21,7 @@ function saveTime() {
 }
 
 meatballs.addEventListener('click', () => {
-  navBar.classList.toggle('nav-bar-flex');
+  navBar.classList.toggle('nav-bar-block');
 });
 
 modeCheck.addEventListener('click', (e) => {
@@ -49,8 +43,9 @@ function startTimeEvent(time) {
     startTimeSet.splice(0, 1, startTimeObject);
     currentTimeSet.splice(0, 1, startTimeObject.timeSec);
     countdownEl.innerText = `${time}:00`;
-    startBtn.addEventListener('click', startTimer);
+    navBar.classList.remove('nav-bar-block');
     saveTime();
+    startBtn.addEventListener('click', startTimer);
   }
 }
 
@@ -201,6 +196,11 @@ function init() {
   loadStartTime();
   // loadCurrentTime();
   navBar.addEventListener('click', navBarClickEvent);
+  console.log(startTimeSet[0]);
+
+  if (startTimeSet[0] === undefined) {
+    startTimeEvent(30);
+  }
 }
 
 init();
