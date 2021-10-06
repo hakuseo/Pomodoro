@@ -54,10 +54,10 @@ function navBarClickEvent(event) {
   startTimeEvent(timer);
 }
 
-function startTimer(current) {
+function startTimer(currentTime) {
   let timeMin = startTimeSet[0].time;
   let timeSec = startTimeSet[0].timeSec;
-  let currentTime = currentTimeSet[0];
+  currentTime = currentTimeSet[0];
   if (
     currentTime === undefined ||
     currentTime == 900 ||
@@ -173,31 +173,30 @@ function startTimer(current) {
 
 function loadStartTime() {
   const loadedStartTime = localStorage.getItem(startTime);
-
+  const loadedCurrentTime = localStorage.getItem(currentTime);
   if (loadedStartTime !== null) {
     const parsedTime = JSON.parse(loadedStartTime);
+    const parsedCurrentTime = JSON.parse(loadedCurrentTime);
     parsedTime.forEach(function (time) {
       countdownEl.innerText = `${time.time}:00`;
       startTimeEvent(time.time);
     });
+
+    parsedCurrentTime.forEach(function (current) {
+      let min = Math.floor(current / 60);
+      let sec = current % 60;
+      min = min < 10 ? '0' + min : min;
+      sec = sec < 10 ? '0' + sec : sec;
+      countdownEl.innerHTML = `${min}:${sec}`;
+      currentTimeSet.splice(0, 1, current);
+      console.log(currentTimeSet);
+    });
   }
 }
 
-// function loadCurrentTime() {
-//   const loadedCurrentTime = localStorage.getItem(currentTime);
-
-//   if (loadedCurrentTime !== null) {
-//     const parsedCurrentTime = JSON.parse(loadedCurrentTime);
-//     parsedCurrentTime.forEach(function (current) {});
-//   }
-// }
-
 function init() {
   loadStartTime();
-  // loadCurrentTime();
   navBar.addEventListener('click', navBarClickEvent);
-  console.log(startTimeSet[0]);
-
   if (startTimeSet[0] === undefined) {
     startTimeEvent(30);
   }
