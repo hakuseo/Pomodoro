@@ -105,7 +105,7 @@ function startTimer(currentTime) {
     () => {
       clearInterval(countDown);
       timeMin = timeMin;
-      currentTime = currentTimeSet[0];
+      currentTime = startTimeSet[0].timeSec;
       currentTimeSet.splice(0, 1, currentTime);
       saveTime();
       countdownEl.innerText = `${timeMin}:00`;
