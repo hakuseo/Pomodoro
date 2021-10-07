@@ -54,7 +54,7 @@ body {
   width: 100%;
 }
 
-.stop {
+.reset {
   border: none;
   background-color: transparent;
   font-size: var(--icon-size);
@@ -235,7 +235,7 @@ body {
     font-size: 20vw;
   }
 
-  .stop {
+  .reset {
     font-size: 20px;
     padding: 0 7px;
     padding-left: 16px;

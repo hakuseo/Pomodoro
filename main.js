@@ -1,5 +1,5 @@
 const modeCheck = document.querySelector('.mode-check');
-const stopBtn = document.querySelector('.stop');
+const resetBtn = document.querySelector('.reset');
 const meatballs = document.querySelector('.meatballs');
 const navBar = document.querySelector('.nav-bar');
 const countdownEl = document.querySelector('.countdown');
@@ -15,34 +15,48 @@ const currentTime = 'currentTimeSet';
 let currentTimeSet = [];
 let startTimeSet = [];
 
+// locatStorage SetItem
 function saveTime() {
   localStorage.setItem(currentTime, JSON.stringify(currentTimeSet));
   localStorage.setItem(startTime, JSON.stringify(startTimeSet));
 }
 
-const prefersDark =
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: Dark)').matches;
+//다크모드, 라이트모드
+const userColorTheme = localStorage.getItem('color-theme');
+const osColorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+  ? 'dark'
+  : 'light';
 
-if (prefersDark) {
-  document.documentElement.setAttribute('color-theme', 'dark');
-  modeCheck.checked = true;
-} else {
-  document.documentElement.setAttribute('color-theme', 'light');
-}
+const userTheme = userColorTheme ? userColorTheme : osColorTheme;
+console.log(userTheme);
+
+window.onload = function () {
+  if (userTheme === 'dark') {
+    localStorage.setItem('color-theme', 'dark');
+    document.documentElement.setAttribute('color-theme', 'dark');
+    modeCheck.setAttribute('checked', true);
+  } else {
+    localStorage.setItem('color-theme', 'light');
+    document.documentElement.setAttribute('color-theme', 'light');
+  }
+};
 
 modeCheck.addEventListener('click', (e) => {
   if (e.target.checked) {
+    localStorage.setItem('color-theme', 'dark');
     document.documentElement.setAttribute('color-theme', 'dark');
   } else {
+    localStorage.setItem('color-theme', 'light');
     document.documentElement.setAttribute('color-theme', 'light');
   }
 });
 
+// nav bar 버튼
 meatballs.addEventListener('click', () => {
   navBar.classList.toggle('nav-bar-block');
 });
 
+// 타이머 설정 (세팅)
 function startTimeEvent(time) {
   if (time !== '') {
     time = +time;
@@ -59,20 +73,27 @@ function startTimeEvent(time) {
   }
 }
 
+// start버튼 누르지 않았을 때의 리셋버튼 설정
+resetBtn.addEventListener('click', (e) => {
+  startTimeEvent(startTimeSet[0].time);
+});
+
 function navBarClickEvent(event) {
   const timer = event.target.id;
   startTimeEvent(timer);
 }
 
+// window.addEventListener('keydown', (e) => {
+//   if ((keyCode = 'Space')) {
+//     startTimer();
+//     console.log();
+//   }
+// });
+
+//start버튼 클릭 이벤트
 startBtn.addEventListener('click', startTimer);
 
-window.addEventListener('keydown', (e) => {
-  if ((keyCode = 'Space')) {
-    startTimer();
-    console.log();
-  }
-});
-
+//타이머 start 함수
 function startTimer(currentTime) {
   let timeMin = startTimeSet[0].time;
   currentTime = currentTimeSet[0];
@@ -105,6 +126,7 @@ function startTimer(currentTime) {
   }, 1000);
   startBtn.style.visibility = 'hidden';
   pauseBtn.style.visibility = 'visible';
+
   fifteen.disabled = true;
   thirty.disabled = true;
   fortyFive.disabled = true;
@@ -118,23 +140,16 @@ function startTimer(currentTime) {
     fortyFive.disabled = false;
   });
 
-  stopBtn.addEventListener(
-    'click',
-    () => {
-      clearInterval(countDown);
-      timeMin = timeMin;
-      currentTime = startTimeSet[0].timeSec;
-      currentTimeSet.splice(0, 1, currentTime);
-      saveTime();
-      countdownEl.innerText = `${timeMin}:00`;
-      startBtn.style.visibility = 'visible';
-      pauseBtn.style.visibility = 'hidden';
-      fifteen.disabled = false;
-      thirty.disabled = false;
-      fortyFive.disabled = false;
-    },
-    1000,
-  );
+  resetBtn.addEventListener('click', () => {
+    clearInterval(countDown);
+    timeMin = timeMin;
+    currentTime = startTimeSet[0].timeSec;
+    currentTimeSet.splice(0, 1, currentTime);
+    saveTime();
+    countdownEl.innerText = `${timeMin}:00`;
+    startBtn.style.visibility = 'visible';
+    pauseBtn.style.visibility = 'hidden';
+  });
 }
 
 function loadStartTime() {
@@ -155,7 +170,7 @@ function loadStartTime() {
       sec = sec < 10 ? '0' + sec : sec;
       countdownEl.innerHTML = `${min}:${sec}`;
       currentTimeSet.splice(0, 1, current);
-      // console.log(current, min, sec);
+      saveTime();
     });
   }
 }
@@ -217,7 +232,7 @@ init();
 //       fortyFive.disabled = false;
 //     });
 
-//     stopBtn.addEventListener(
+//     resetBtn.addEventListener(
 //       'click',
 //       () => {
 //         clearInterval(countDown);
