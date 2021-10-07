@@ -29,11 +29,12 @@ body {
   display: flex;
   justify-content: center;
   background-color: var(--background);
+  transition: 0.4s cubic-bezier(0.76, 0.03, 0.32, 1.04);
 }
 
 /* container */
 .container {
-  margin: 30px;
+  margin: 40px 30px;
   width: 100%;
   max-width: 1000px;
   display: flex;
@@ -42,6 +43,7 @@ body {
   flex-direction: column;
   background-color: var(--background);
   position: relative;
+  transition: 0.4s cubic-bezier(0.76, 0.03, 0.32, 1.04);
 }
 
 /* header */
@@ -64,6 +66,7 @@ body {
 }
 
 .meatballs {
+  color: var(--mainColor);
   font-size: var(--icon-size);
   padding: 0 10px;
   padding-top: 2px;
@@ -139,6 +142,8 @@ body {
 
 .btn > button {
   border: 1px solid var(--borderColor);
+  padding: 0;
+
   border-radius: 5px;
   background-color: transparent;
   font-size: var(--font-size);
@@ -154,8 +159,11 @@ body {
   box-shadow: 0px 0px 3px 1px var(--shadowColor);
 }
 
-.pause {
+.btn > .pause {
   visibility: hidden;
+  box-sizing: border-box;
+  padding-bottom: 2px;
+  padding-left: 1px;
   position: absolute;
 }
 
@@ -224,6 +232,38 @@ body {
   .section > .countdown {
     font-size: 20vh;
     font-size: 20vw;
+  }
+
+  .stop {
+    font-size: 20px;
+    padding: 0 7px;
+    padding-left: 16px;
+  }
+
+  .meatballs {
+    font-size: 20px;
+    padding-left: 7px;
+    padding-top: 2px;
+  }
+
+  .switch-button {
+    width: 50px;
+    height: 27px;
+  }
+
+  .onoff-switch:before {
+    padding-left: 1px;
+    padding-bottom: 1px;
+    height: 19px;
+    width: 19px;
+    left: 4px;
+    bottom: 4px;
+  }
+
+  .switch-button input:checked + .onoff-switch:before {
+    -webkit-transform: translateX(23px);
+    -ms-transform: translateX(23px);
+    transform: translateX(23px);
   }
 }
 
