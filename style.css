@@ -71,6 +71,7 @@ body {
   padding: 0 10px;
   padding-top: 2px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 /* navigation bar */
@@ -143,7 +144,6 @@ body {
 .btn > button {
   border: 1px solid var(--borderColor);
   padding: 0;
-
   border-radius: 5px;
   background-color: transparent;
   font-size: var(--font-size);
@@ -152,6 +152,7 @@ body {
   color: var(--mainColor);
   width: 80px;
   height: 36px;
+  cursor: pointer;
 }
 
 .start:hover,
@@ -172,7 +173,7 @@ body {
   position: relative;
   display: inline-block;
   width: 55px;
-  height: 30px;
+  height: 29px;
   /* border: 2px solid darkkhaki; */
 }
 
@@ -205,8 +206,8 @@ body {
   padding-left: 4px;
   padding-bottom: 1px;
   box-sizing: border-box;
-  height: 22px;
-  width: 22px;
+  height: 21px;
+  width: 21px;
   left: 4px;
   bottom: 4px;
   background-color: #fff;
@@ -221,9 +222,9 @@ body {
 }
 
 .switch-button input:checked + .onoff-switch:before {
-  -webkit-transform: translateX(24px);
-  -ms-transform: translateX(24px);
-  transform: translateX(24px);
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
   padding-left: 4px;
   box-sizing: border-box;
 }

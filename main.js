@@ -20,6 +20,17 @@ function saveTime() {
   localStorage.setItem(startTime, JSON.stringify(startTimeSet));
 }
 
+const prefersDark =
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: Dark)').matches;
+
+if (prefersDark) {
+  document.documentElement.setAttribute('color-theme', 'dark');
+  modeCheck.checked = true;
+} else {
+  document.documentElement.setAttribute('color-theme', 'light');
+}
+
 modeCheck.addEventListener('click', (e) => {
   if (e.target.checked) {
     document.documentElement.setAttribute('color-theme', 'dark');
@@ -54,6 +65,13 @@ function navBarClickEvent(event) {
 }
 
 startBtn.addEventListener('click', startTimer);
+
+window.addEventListener('keydown', (e) => {
+  if ((keyCode = 'Space')) {
+    startTimer();
+    console.log();
+  }
+});
 
 function startTimer(currentTime) {
   let timeMin = startTimeSet[0].time;
