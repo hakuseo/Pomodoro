@@ -34,7 +34,7 @@ body {
 
 /* container */
 .container {
-  padding: 40px 30px;
+  margin: 40px 30px;
   box-sizing: border-box;
   width: 100%;
   max-width: 1000px;
@@ -78,8 +78,8 @@ body {
 /* navigation bar */
 .nav {
   position: absolute;
-  top: 50px;
-  right: 0;
+  top: 45px;
+  right: 10px;
 }
 
 .nav > .nav-bar-block {
@@ -232,7 +232,7 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: 60px 20px;
+    margin: 60px 20px;
   }
   .section > .countdown {
     font-size: 22vh;
