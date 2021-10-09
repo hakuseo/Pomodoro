@@ -148,6 +148,7 @@ window.addEventListener('keydown', (e) => {
 let countDown;
 btn.addEventListener('change', (e) => {
   if (e.currentTarget.checked) {
+    console.log(e.currentTarget.checked);
     startTimer();
     function startTimer(currentTime) {
       currentTime = currentTimeSet[0];
@@ -165,6 +166,8 @@ btn.addEventListener('change', (e) => {
           clearInterval(countDown);
           audio.play();
           audio.volume = 0.2;
+          // btn.removeAttribute('checked');
+          btn.checked = false;
           setTimeout(() => {
             currentTime = startTimeSet[0].timeSec;
             let min = Math.floor(currentTime / 60);
