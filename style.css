@@ -1,10 +1,13 @@
 :root,
 :root[color-theme='light'] {
   /* color */
-  --background: #f8f9fa;
-  --mainColor: #212529;
+  --background: #e9ecef;
+  --mainColor: #343a40;
   --shadowColor: #ced4da;
   --borderColor: #adb5bd;
+  --input-shadow: -1px -1px 4px #fff, 2px 2px 5px var(--shadowColor);
+  --input-checked-shadow: -1px -1px 4px #fff, 2px 2px 5px var(--shadowColor),
+    inset 2px 2px 5px #dae0e6f5, inset 4px 4px 3px var(--background);
 
   /* font */
   --icon-size: 22px;
@@ -15,10 +18,13 @@
 }
 
 :root[color-theme='dark'] {
-  --background: #212529;
+  --background: #343a40;
   --mainColor: #f8f9fa;
   --shadowColor: #868e96;
   --borderColor: #ced4da;
+  --input-shadow: -1px -1px 2px #4c5458cc, 2px 2px 5px #212529a8;
+  --input-checked-shadow: -1px -1px 2px #4c5458cc, 2px 2px 5px #212529a8,
+    inset 2px 2px 4px #212529a8, inset 4px 4px 3px var(--background);
 }
 
 /* body */
@@ -29,7 +35,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: var(--background);
-  transition: 0.4s cubic-bezier(0.76, 0.03, 0.32, 1.04);
+  transition: 0.3s cubic-bezier(0.76, 0.03, 0.32, 1.04);
 }
 
 /* container */
@@ -44,7 +50,7 @@ body {
   flex-direction: column;
   background-color: var(--background);
   position: relative;
-  transition: 0.4s cubic-bezier(0.76, 0.03, 0.32, 1.04);
+  transition: 0.3s cubic-bezier(0.76, 0.03, 0.32, 1.04);
 }
 
 /* header */
@@ -128,8 +134,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12vh;
-  font-size: 12vw;
+  font-size: 11vh;
+  font-size: 11vw;
   color: var(--mainColor);
 }
 
@@ -143,7 +149,6 @@ body {
 }
 
 .btn > button {
-  border: 1px solid var(--borderColor);
   padding: 0;
   border-radius: 5px;
   background-color: transparent;
@@ -151,22 +156,26 @@ body {
   font-family: var(--font-poppins);
   font-weight: 500;
   color: var(--mainColor);
-  width: 80px;
-  height: 36px;
+  height: 46px;
+  width: 90px;
   cursor: pointer;
+  -webkit-appearance: none;
+  border: none;
 }
 
-.start:hover,
-.pause:hover {
-  box-shadow: 0px 0px 3px 1px var(--shadowColor);
+.btn > .start {
+  box-shadow: var(--input-shadow);
+  border-radius: 5px;
+  border: 2px solid var(--background);
+  outline: none;
 }
 
 .btn > .pause {
   visibility: hidden;
   box-sizing: border-box;
-  padding-bottom: 2px;
-  padding-left: 1px;
   position: absolute;
+  box-shadow: var(--input-checked-shadow);
+  border-radius: 6px;
 }
 
 /* light mode */
@@ -272,7 +281,7 @@ body {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1230px) {
+@media (min-width: 769px) and (max-width: 1440px) {
   .section > .countdown {
     font-size: 16vh;
     font-size: 16vw;
