@@ -152,9 +152,10 @@ body {
   padding: 0;
   border-radius: 5px;
   background-color: transparent;
-  font-size: var(--font-size);
+  font-size: 17px;
   font-family: var(--font-poppins);
-  font-weight: 500;
+  font-weight: 600;
+
   color: var(--mainColor);
   height: 46px;
   width: 90px;
@@ -168,14 +169,15 @@ body {
   border-radius: 5px;
   border: 2px solid var(--background);
   outline: none;
+  transition: 0.3s cubic-bezier(0.76, 0.03, 0.32, 1.04);
 }
 
 .btn > .pause {
+  padding-bottom: 2px;
   visibility: hidden;
   box-sizing: border-box;
   position: absolute;
   box-shadow: var(--input-checked-shadow);
-  border-radius: 6px;
 }
 
 /* light mode */
@@ -202,7 +204,7 @@ body {
   bottom: 0;
   border-radius: 20px;
   background-color: #f2d522;
-  box-shadow: inset 1px 4px 1px #e3ae56;
+  box-shadow: inset 2px 4px 3px #e3ae56;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -227,8 +229,8 @@ body {
 }
 
 .switch-button input:checked + .onoff-switch {
-  background-color: #ccc;
-  box-shadow: inset 1px 5px 1px #999;
+  background-color: #868e96;
+  box-shadow: inset 2px 4px 3px #535a61;
 }
 
 .switch-button input:checked + .onoff-switch:before {
@@ -237,6 +239,10 @@ body {
   transform: translateX(25px);
   padding-left: 4px;
   box-sizing: border-box;
+
+  /* content: url('./img/moon.png');
+  top: 6px;
+  left: 2px; */
 }
 
 @media (max-width: 768px) {

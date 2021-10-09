@@ -9,6 +9,7 @@ const audio = document.querySelector('.audio');
 const fifteen = document.getElementById(15);
 const thirty = document.getElementById(30);
 const fortyFive = document.getElementById(45);
+const onOff = document.querySelector('onoff-switch:before');
 const startTime = 'startTimeSet';
 const currentTime = 'currentTimeSet';
 
@@ -84,7 +85,9 @@ function navBarClickEvent(event) {
 }
 
 //start버튼 클릭 이벤트
-startBtn.addEventListener('click', startTimer);
+startBtn.addEventListener('click', () => {
+  startTimer();
+});
 
 // 타이머 start 함수
 function startTimer(currentTime) {
