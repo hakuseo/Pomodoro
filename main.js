@@ -84,72 +84,122 @@ function navBarClickEvent(event) {
   startTimeEvent(timer);
 }
 
-//start버튼 클릭 이벤트
-startBtn.addEventListener('click', () => {
-  startTimer();
+//
+//
+//
+
+const btn = document.querySelector('.btn');
+
+window.addEventListener('keydown', (e) => {
+  if ((e.code = 'Space')) {
+    if (!btn.checked) {
+      btn.setAttribute('checked', true);
+      startTimer();
+      function startTimer(currentTime) {
+        currentTime = currentTimeSet[0];
+        countDown = setInterval(function () {
+          let min = Math.floor(currentTime / 60);
+          let sec = currentTime % 60;
+          min = min < 10 ? '0' + min : min;
+          sec = sec < 10 ? '0' + sec : sec;
+          countdownEl.innerHTML = `${min}:${sec}`;
+          currentTimeSet.splice(0, 1, currentTime);
+          currentTime--;
+          saveTime();
+          if (min == 0 && sec == 0) {
+            clearInterval(countDown);
+            audio.play();
+            audio.volume = 0.2;
+            setTimeout(() => {
+              currentTime = startTimeSet[0].timeSec;
+              let min = Math.floor(currentTime / 60);
+              let sec = currentTime % 60;
+              min = min < 10 ? '0' + min : min;
+              sec = sec < 10 ? '0' + sec : sec;
+              countdownEl.innerHTML = `${min}:${sec}`;
+              currentTimeSet.splice(0, 1, currentTime);
+              saveTime();
+            }, 1800);
+          }
+        }, 1000);
+      }
+      resetBtn.addEventListener('click', () => {
+        let timeMin = startTimeSet[0].time;
+        clearInterval(countDown);
+        saveTime();
+        countdownEl.innerText = `${timeMin}:00`;
+        fifteen.disabled = false;
+        thirty.disabled = false;
+        fortyFive.disabled = false;
+      });
+      fifteen.disabled = true;
+      thirty.disabled = true;
+      fortyFive.disabled = true;
+    } else {
+      btn.removeAttribute('checked');
+      clearInterval(countDown);
+      fifteen.disabled = false;
+      thirty.disabled = false;
+      fortyFive.disabled = false;
+    }
+  }
 });
 
-// 타이머 start 함수
-function startTimer(currentTime) {
-  let timeMin = startTimeSet[0].time;
-  currentTime = currentTimeSet[0];
-  let countDown = setInterval(function () {
-    let min = Math.floor(currentTime / 60);
-    let sec = currentTime % 60;
-    min = min < 10 ? '0' + min : min;
-    sec = sec < 10 ? '0' + sec : sec;
-    countdownEl.innerHTML = `${min}:${sec}`;
-    currentTimeSet.splice(0, 1, currentTime);
-    currentTime--;
-    saveTime();
-    if (min == 0 && sec == 0) {
-      clearInterval(countDown);
-      audio.play();
-      audio.volume = 0.2;
-      setTimeout(() => {
-        currentTime = startTimeSet[0].timeSec;
+let countDown;
+btn.addEventListener('change', (e) => {
+  if (e.currentTarget.checked) {
+    startTimer();
+    function startTimer(currentTime) {
+      currentTime = currentTimeSet[0];
+      countDown = setInterval(function () {
         let min = Math.floor(currentTime / 60);
         let sec = currentTime % 60;
         min = min < 10 ? '0' + min : min;
         sec = sec < 10 ? '0' + sec : sec;
         countdownEl.innerHTML = `${min}:${sec}`;
         currentTimeSet.splice(0, 1, currentTime);
+        currentTime--;
         saveTime();
-        startBtn.style.visibility = 'visible';
-        pauseBtn.style.visibility = 'hidden';
-      }, 1800);
+
+        if (min == 0 && sec == 0) {
+          clearInterval(countDown);
+          audio.play();
+          audio.volume = 0.2;
+          setTimeout(() => {
+            currentTime = startTimeSet[0].timeSec;
+            let min = Math.floor(currentTime / 60);
+            let sec = currentTime % 60;
+            min = min < 10 ? '0' + min : min;
+            sec = sec < 10 ? '0' + sec : sec;
+            countdownEl.innerHTML = `${min}:${sec}`;
+            currentTimeSet.splice(0, 1, currentTime);
+            saveTime();
+          }, 1800);
+        }
+      }, 1000);
+      fifteen.disabled = true;
+      thirty.disabled = true;
+      fortyFive.disabled = true;
     }
-  }, 1000);
-  startBtn.style.visibility = 'hidden';
-  pauseBtn.style.visibility = 'visible';
-
-  fifteen.disabled = true;
-  thirty.disabled = true;
-  fortyFive.disabled = true;
-
-  pauseBtn.addEventListener('click', () => {
+    resetBtn.addEventListener('click', () => {
+      let timeMin = startTimeSet[0].time;
+      clearInterval(countDown);
+      saveTime();
+      countdownEl.innerText = `${timeMin}:00`;
+      fifteen.disabled = false;
+      thirty.disabled = false;
+      fortyFive.disabled = false;
+    });
+  } else {
     clearInterval(countDown);
-    startBtn.style.visibility = 'visible';
-    pauseBtn.style.visibility = 'hidden';
     fifteen.disabled = false;
     thirty.disabled = false;
     fortyFive.disabled = false;
-  });
-
-  resetBtn.addEventListener('click', () => {
-    clearInterval(countDown);
-    timeMin = timeMin;
-    currentTime = startTimeSet[0].timeSec;
-    currentTimeSet.splice(0, 1, currentTime);
-    saveTime();
-    countdownEl.innerText = `${timeMin}:00`;
-    startBtn.style.visibility = 'visible';
-    pauseBtn.style.visibility = 'hidden';
-    fifteen.disabled = false;
-    thirty.disabled = false;
-    fortyFive.disabled = false;
-  });
-}
+  }
+});
+//
+//
+//
 
 function loadStartTime() {
   const loadedStartTime = localStorage.getItem(startTime);
@@ -201,5 +251,21 @@ init();
 //       thirty.disabled = false;
 //       fortyFive.disabled = false;
 //     }
+//   }
+// });
+// document.addEventListener('DOMContentLoaded', function () {});
+
+// let timer = 0;
+// let timeId;
+// const h1 = document.querySelector('h1');
+// const checkbox = document.querySelector('.test');
+// checkbox.addEventListener('change', (e) => {
+//   if (e.currentTarget.checked) {
+//     timeId = setInterval(function () {
+//       timer += 1;
+//       h1.textContent = `${timer}초`;
+//     }, 1000);
+//   } else {
+//     clearInterval(timeId);
 //   }
 // });
