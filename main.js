@@ -10,6 +10,7 @@ const fifteen = document.getElementById(15);
 const thirty = document.getElementById(30);
 const fortyFive = document.getElementById(45);
 const onOff = document.querySelector('onoff-switch:before');
+const numb = document.querySelector('.numb');
 const startTime = 'startTimeSet';
 const currentTime = 'currentTimeSet';
 
@@ -89,9 +90,23 @@ function navBarClickEvent(event) {
 //
 
 const btn = document.querySelector('.btn');
+const getTodayCount = localStorage.getItem('todayCount');
+
+let number = getTodayCount;
+numb.innerHTML = `${number} `;
+let countDown;
+
+let date = new Date();
+let hours = date.getHours();
+let minutes = date.getMinutes();
+let seconds = date.getSeconds();
+
+// if (dateText === 0) {
+//   number = 0;
+// }
 
 window.addEventListener('keydown', (e) => {
-  if ((e.code = 'Space')) {
+  if (e.code === 'Space') {
     if (!btn.checked) {
       btn.setAttribute('checked', true);
       startTimer();
@@ -119,6 +134,10 @@ window.addEventListener('keydown', (e) => {
               countdownEl.innerHTML = `${min}:${sec}`;
               currentTimeSet.splice(0, 1, currentTime);
               saveTime();
+              btn.checked = false;
+              number++;
+              numb.innerHTML = `${number} `;
+              localStorage.setItem('todayCount', `${number}`);
             }, 1800);
           }
         }, 1000);
@@ -131,6 +150,7 @@ window.addEventListener('keydown', (e) => {
         fifteen.disabled = false;
         thirty.disabled = false;
         fortyFive.disabled = false;
+        btn.checked = false;
       });
       fifteen.disabled = true;
       thirty.disabled = true;
@@ -141,14 +161,13 @@ window.addEventListener('keydown', (e) => {
       fifteen.disabled = false;
       thirty.disabled = false;
       fortyFive.disabled = false;
+      btn.checked = false;
     }
   }
 });
 
-let countDown;
 btn.addEventListener('change', (e) => {
   if (e.currentTarget.checked) {
-    console.log(e.currentTarget.checked);
     startTimer();
     function startTimer(currentTime) {
       currentTime = currentTimeSet[0];
@@ -161,7 +180,6 @@ btn.addEventListener('change', (e) => {
         currentTimeSet.splice(0, 1, currentTime);
         currentTime--;
         saveTime();
-
         if (min == 0 && sec == 0) {
           clearInterval(countDown);
           audio.play();
@@ -176,6 +194,10 @@ btn.addEventListener('change', (e) => {
             countdownEl.innerHTML = `${min}:${sec}`;
             currentTimeSet.splice(0, 1, currentTime);
             saveTime();
+            btn.checked = false;
+            number++;
+            numb.innerHTML = `${number} `;
+            localStorage.setItem('todayCount', `${number}`);
           }, 1800);
         }
       }, 1000);
@@ -198,6 +220,7 @@ btn.addEventListener('change', (e) => {
     fifteen.disabled = false;
     thirty.disabled = false;
     fortyFive.disabled = false;
+    btn.checked = false;
   }
 });
 //

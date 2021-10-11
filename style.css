@@ -3,11 +3,11 @@
   /* color */
   --background: #e9ecef;
   --mainColor: #343a40;
-  --shadowColor: #ced4da;
+  --shadowColor: #bac0c6;
   --borderColor: #adb5bd;
   --input-shadow: -1px -1px 4px #fff, 2px 2px 5px var(--shadowColor);
   --input-checked-shadow: -1px -1px 4px #fff, 2px 2px 5px var(--shadowColor),
-    inset 2px 2px 5px #dae0e6f5, inset 4px 4px 3px var(--background);
+    inset 2px 2px 5px #d0d6dcf5, inset 4px 4px 3px var(--background);
 
   /* font */
   --icon-size: 22px;
@@ -40,7 +40,7 @@ body {
 
 /* container */
 .container {
-  margin: 40px 30px;
+  margin: 50px;
   box-sizing: border-box;
   width: 100%;
   max-width: 1000px;
@@ -97,7 +97,7 @@ body {
   padding: 10px 16px;
   box-sizing: border-box;
   border: 1px solid var(--borderColor);
-  box-shadow: 0px 0px 4px 0px var(--shadowColor);
+  box-shadow: 0px 0px 4px 1px var(--shadowColor);
   border-radius: 5px;
   flex-direction: column;
   align-items: center;
@@ -123,20 +123,41 @@ body {
 
 /* section */
 .section {
-  font-weight: 600;
   font-family: var(--font-roboto);
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.rest {
+  font-size: 3vw;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+}
+
+.todayCounting {
+  padding-left: 5px;
+  font-family: var(--font-poppins);
+  color: var(--shadowColor);
+  font-size: 1.8vw;
+  font-weight: 500;
+}
+
+.numb {
+  color: var(--mainColor);
+  font-weight: 600;
 }
 
 .section > .countdown {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 15vh;
-  font-size: 15vw;
+  font-weight: 600;
+  font-size: 18vh;
+  font-size: 18vw;
   color: var(--mainColor);
+  margin: 20px 0;
 }
 
 /* button */
@@ -226,20 +247,37 @@ body {
 }
 
 .switch-button input:checked + .onoff-switch:before {
-  -webkit-transform: translateX(25px);
-  -ms-transform: translateX(25px);
-  transform: translateX(25px);
-  padding-left: 4px;
+  -webkit-transform: translateX(23px);
+  -ms-transform: translateX(23px);
+  transform: translateX(23px);
+  /* padding-left: 6px; */
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+.switch-button input:checked + .onoff-switch:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
   .container {
     margin: 60px 20px;
   }
+
   .section > .countdown {
-    font-size: 15vh;
-    font-size: 15vw;
+    font-size: 22vh;
+    font-size: 22vw;
+  }
+
+  .todayCounting {
+    font-size: 3.5vw;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    margin: 100px 50px;
   }
 
   .reset {
@@ -252,6 +290,10 @@ body {
     font-size: 20px;
     padding-left: 7px;
     padding-top: 2px;
+  }
+
+  .todayCounting {
+    font-size: 2.5vw;
   }
 
   .switch-button {
@@ -273,13 +315,13 @@ body {
     -ms-transform: translateX(23px);
     transform: translateX(23px);
   }
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
   .section > .countdown {
-    font-size: 22vh;
-    font-size: 22vw;
+    font-size: 16vh;
+    font-size: 16vw;
   }
+  /* 사용자 해상도가 768px 이상이고 1024px 이하일 때 이 코드가 실행됨.
+  
+  아이패드 또는 비교적 작은 해상도의 랩탑이나 데스크톱에 대응하는 코드를 작성한다. */
 }
 
 @media all and (min-width: 1025px) {
