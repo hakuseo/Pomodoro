@@ -166,7 +166,6 @@ btn.addEventListener('change', (e) => {
           clearInterval(countDown);
           audio.play();
           audio.volume = 0.2;
-          // btn.removeAttribute('checked');
           btn.checked = false;
           setTimeout(() => {
             currentTime = startTimeSet[0].timeSec;
@@ -192,6 +191,7 @@ btn.addEventListener('change', (e) => {
       fifteen.disabled = false;
       thirty.disabled = false;
       fortyFive.disabled = false;
+      btn.checked = false;
     });
   } else {
     clearInterval(countDown);

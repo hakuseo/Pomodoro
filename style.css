@@ -134,13 +134,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 11vh;
-  font-size: 11vw;
+  font-size: 15vh;
+  font-size: 15vw;
   color: var(--mainColor);
 }
 
 /* button */
-
 .btn {
   display: flex;
   justify-content: center;
@@ -167,47 +166,12 @@ body {
   box-sizing: border-box;
   box-shadow: var(--input-checked-shadow);
 }
+
 .btn:checked::after {
   content: 'pause';
+  padding-left: 1px;
+  padding-bottom: 1px;
 }
-/* .btn {
-  font-family: var(--font-poppins);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.btn > button {
-  padding: 0;
-  border-radius: 5px;
-  background-color: transparent;
-  font-size: 17px;
-  font-family: var(--font-poppins);
-  font-weight: 600;
-  color: var(--mainColor);
-  height: 43px;
-  width: 90px;
-  cursor: pointer;
-  -webkit-appearance: none;
-  border: none;
-  transition: 0.3s cubic-bezier(0.76, 0.03, 0.32, 1.04);
-}
-
-.btn > .start {
-  box-shadow: var(--input-shadow);
-  border-radius: 5px;
-  border: 2px solid var(--background);
-  outline: none;
-}
-
-.btn > .pause {
-  padding-bottom: 2px;
-  visibility: hidden;
-  box-sizing: border-box;
-  position: absolute;
-  box-shadow: var(--input-checked-shadow);
-} */
 
 /* light mode */
 .switch-button {
@@ -215,7 +179,6 @@ body {
   display: inline-block;
   width: 55px;
   height: 29px;
-  /* border: 2px solid darkkhaki; */
 }
 
 .switch-button input {
@@ -268,10 +231,6 @@ body {
   transform: translateX(25px);
   padding-left: 4px;
   box-sizing: border-box;
-
-  /* content: url('./img/moon.png');
-  top: 6px;
-  left: 2px; */
 }
 
 @media (max-width: 768px) {
@@ -279,8 +238,8 @@ body {
     margin: 60px 20px;
   }
   .section > .countdown {
-    font-size: 22vh;
-    font-size: 22vw;
+    font-size: 15vh;
+    font-size: 15vw;
   }
 
   .reset {
@@ -316,9 +275,19 @@ body {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1440px) {
+@media (min-width: 320px) and (max-width: 480px) {
   .section > .countdown {
-    font-size: 16vh;
-    font-size: 16vw;
+    font-size: 22vh;
+    font-size: 22vw;
+  }
+}
+
+@media all and (min-width: 1025px) {
+  /* 사용자 해상도가 1025px 이상일 때 이 코드가 실행됨.
+  
+  1025px 이상의 이상의 랩탑 또는 데스크탑에 대응하는 코드를 작성한다. */
+  .section > .countdown {
+    font-size: 13vh;
+    font-size: 13vw;
   }
 }
