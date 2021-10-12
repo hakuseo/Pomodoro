@@ -281,6 +281,10 @@ function init() {
   if (startTimeSet[0] === undefined) {
     startTimeEvent(30);
   }
+  if (number === null) {
+    number = 0;
+    numb.innerHTML = `${number} `;
+  }
 }
 
 init();
