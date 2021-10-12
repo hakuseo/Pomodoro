@@ -130,17 +130,11 @@ body {
   flex-direction: column;
 }
 
-.rest {
-  font-size: 3vw;
-  font-family: var(--font-poppins);
-  font-weight: 500;
-}
-
 .todayCounting {
   padding-left: 5px;
   font-family: var(--font-poppins);
   color: var(--shadowColor);
-  font-size: 1.8vw;
+  font-size: 20px;
   font-weight: 500;
 }
 
@@ -271,7 +265,7 @@ body {
   }
 
   .todayCounting {
-    font-size: 3.5vw;
+    font-size: 13px;
   }
 }
 
@@ -293,7 +287,7 @@ body {
   }
 
   .todayCounting {
-    font-size: 2.5vw;
+    font-size: 20px;
   }
 
   .switch-button {
@@ -316,8 +310,8 @@ body {
     transform: translateX(23px);
   }
   .section > .countdown {
-    font-size: 16vh;
-    font-size: 16vw;
+    font-size: 15vh;
+    font-size: 15vw;
   }
   /* 사용자 해상도가 768px 이상이고 1024px 이하일 때 이 코드가 실행됨.
   
@@ -328,8 +322,12 @@ body {
   /* 사용자 해상도가 1025px 이상일 때 이 코드가 실행됨.
   
   1025px 이상의 이상의 랩탑 또는 데스크탑에 대응하는 코드를 작성한다. */
+
+  .todayCounting {
+    font-size: 21px;
+  }
   .section > .countdown {
-    font-size: 13vh;
-    font-size: 13vw;
+    font-size: 11vh;
+    font-size: 11vw;
   }
 }

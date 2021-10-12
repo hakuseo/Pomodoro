@@ -36,7 +36,11 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body
+    contextmenu="return false"
+    ondragstart="return false"
+    onselectstart="return false"
+  >
     <div class="container">
       <!-- header -->
       <header class="header">
@@ -63,10 +67,11 @@
 
       <!-- section -->
       <section class="section">
-        <div class="todayCounting">
+        <h2 class="countdown"></h2>
+        <p class="todayCounting">
           <span class="numb"></span>timers completed today
-        </div>
-        <section class="countdown"></section>
+        </p>
+        <div class="test"></div>
       </section>
 
       <!-- button -->

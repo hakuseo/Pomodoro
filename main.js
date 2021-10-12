@@ -30,7 +30,6 @@ const osColorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
   : 'light';
 
 const userTheme = userColorTheme ? userColorTheme : osColorTheme;
-console.log(userTheme);
 
 window.onload = function () {
   if (userTheme === 'dark') {
@@ -85,82 +84,105 @@ function navBarClickEvent(event) {
   startTimeEvent(timer);
 }
 
-//
-//
-//
-
 const btn = document.querySelector('.btn');
 const getTodayCount = localStorage.getItem('todayCount');
 
 let number = getTodayCount;
 numb.innerHTML = `${number} `;
+
+setInterval(a, 3000);
+
+const test = document.querySelector('.test');
+
+function a() {
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let dateText = hours + minutes + seconds;
+  if (dateText < 3) {
+    number = 0;
+    numb.innerHTML = `${number} `;
+    localStorage.setItem('todayCount', `${number}`);
+  }
+}
+
 let countDown;
 
-let date = new Date();
-let hours = date.getHours();
-let minutes = date.getMinutes();
-let seconds = date.getSeconds();
-
-// if (dateText === 0) {
-//   number = 0;
-// }
+// window.addEventListener('keydown', (e) => {
+//   if (e.code === 'Space') {
+//     if (!btn.checked) {
+//       btn.checked = true;
+//       startTimer();
+//       function startTimer(currentTime) {
+//         currentTime = currentTimeSet[0];
+//         countDown = setInterval(function () {
+//           let min = Math.floor(currentTime / 60);
+//           let sec = currentTime % 60;
+//           min = min < 10 ? '0' + min : min;
+//           sec = sec < 10 ? '0' + sec : sec;
+//           countdownEl.innerHTML = `${min}:${sec}`;
+//           currentTimeSet.splice(0, 1, currentTime);
+//           currentTime--;
+//           saveTime();
+//           if (min == 0 && sec == 0) {
+//             clearInterval(countDown);
+//             audio.play();
+//             audio.volume = 0.2;
+//             setTimeout(() => {
+//               currentTime = startTimeSet[0].timeSec;
+//               let min = Math.floor(currentTime / 60);
+//               let sec = currentTime % 60;
+//               min = min < 10 ? '0' + min : min;
+//               sec = sec < 10 ? '0' + sec : sec;
+//               countdownEl.innerHTML = `${min}:${sec}`;
+//               currentTimeSet.splice(0, 1, currentTime);
+//               saveTime();
+//               btn.checked = false;
+//               number++;
+//               numb.innerHTML = `${number} `;
+//               localStorage.setItem('todayCount', `${number}`);
+//             }, 1800);
+//           }
+//         }, 1000);
+//       }
+//       resetBtn.addEventListener('click', () => {
+//         btn.checked = false;
+//         let timeMin = startTimeSet[0].time;
+//         clearInterval(countDown);
+//         saveTime();
+//         countdownEl.innerText = `${timeMin}:00`;
+//         fifteen.disabled = false;
+//         thirty.disabled = false;
+//         fortyFive.disabled = false;
+//       });
+//       fifteen.disabled = true;
+//       thirty.disabled = true;
+//       fortyFive.disabled = true;
+//     } else {
+//       console.log(btn.checked);
+//       btn.checked = false;
+//       console.log(btn.checked);
+//       clearInterval(countDown);
+//       fifteen.disabled = false;
+//       thirty.disabled = false;
+//       fortyFive.disabled = false;
+//     }
+//   }
+// });
 
 window.addEventListener('keydown', (e) => {
   if (e.code === 'Space') {
     if (!btn.checked) {
-      btn.setAttribute('checked', true);
+      btn.checked = true;
       startTimer();
-      function startTimer(currentTime) {
-        currentTime = currentTimeSet[0];
-        countDown = setInterval(function () {
-          let min = Math.floor(currentTime / 60);
-          let sec = currentTime % 60;
-          min = min < 10 ? '0' + min : min;
-          sec = sec < 10 ? '0' + sec : sec;
-          countdownEl.innerHTML = `${min}:${sec}`;
-          currentTimeSet.splice(0, 1, currentTime);
-          currentTime--;
-          saveTime();
-          if (min == 0 && sec == 0) {
-            clearInterval(countDown);
-            audio.play();
-            audio.volume = 0.2;
-            setTimeout(() => {
-              currentTime = startTimeSet[0].timeSec;
-              let min = Math.floor(currentTime / 60);
-              let sec = currentTime % 60;
-              min = min < 10 ? '0' + min : min;
-              sec = sec < 10 ? '0' + sec : sec;
-              countdownEl.innerHTML = `${min}:${sec}`;
-              currentTimeSet.splice(0, 1, currentTime);
-              saveTime();
-              btn.checked = false;
-              number++;
-              numb.innerHTML = `${number} `;
-              localStorage.setItem('todayCount', `${number}`);
-            }, 1800);
-          }
-        }, 1000);
-      }
-      resetBtn.addEventListener('click', () => {
-        let timeMin = startTimeSet[0].time;
-        clearInterval(countDown);
-        saveTime();
-        countdownEl.innerText = `${timeMin}:00`;
-        fifteen.disabled = false;
-        thirty.disabled = false;
-        fortyFive.disabled = false;
-        btn.checked = false;
-      });
-      fifteen.disabled = true;
-      thirty.disabled = true;
-      fortyFive.disabled = true;
+      resetEvent();
     } else {
-      btn.removeAttribute('checked');
       clearInterval(countDown);
       fifteen.disabled = false;
       thirty.disabled = false;
       fortyFive.disabled = false;
+      btn.blur();
       btn.checked = false;
     }
   }
@@ -169,52 +191,7 @@ window.addEventListener('keydown', (e) => {
 btn.addEventListener('change', (e) => {
   if (e.currentTarget.checked) {
     startTimer();
-    function startTimer(currentTime) {
-      currentTime = currentTimeSet[0];
-      countDown = setInterval(function () {
-        let min = Math.floor(currentTime / 60);
-        let sec = currentTime % 60;
-        min = min < 10 ? '0' + min : min;
-        sec = sec < 10 ? '0' + sec : sec;
-        countdownEl.innerHTML = `${min}:${sec}`;
-        currentTimeSet.splice(0, 1, currentTime);
-        currentTime--;
-        saveTime();
-        if (min == 0 && sec == 0) {
-          clearInterval(countDown);
-          audio.play();
-          audio.volume = 0.2;
-          btn.checked = false;
-          setTimeout(() => {
-            currentTime = startTimeSet[0].timeSec;
-            let min = Math.floor(currentTime / 60);
-            let sec = currentTime % 60;
-            min = min < 10 ? '0' + min : min;
-            sec = sec < 10 ? '0' + sec : sec;
-            countdownEl.innerHTML = `${min}:${sec}`;
-            currentTimeSet.splice(0, 1, currentTime);
-            saveTime();
-            btn.checked = false;
-            number++;
-            numb.innerHTML = `${number} `;
-            localStorage.setItem('todayCount', `${number}`);
-          }, 1800);
-        }
-      }, 1000);
-      fifteen.disabled = true;
-      thirty.disabled = true;
-      fortyFive.disabled = true;
-    }
-    resetBtn.addEventListener('click', () => {
-      let timeMin = startTimeSet[0].time;
-      clearInterval(countDown);
-      saveTime();
-      countdownEl.innerText = `${timeMin}:00`;
-      fifteen.disabled = false;
-      thirty.disabled = false;
-      fortyFive.disabled = false;
-      btn.checked = false;
-    });
+    resetEvent();
   } else {
     clearInterval(countDown);
     fifteen.disabled = false;
@@ -223,10 +200,57 @@ btn.addEventListener('change', (e) => {
     btn.checked = false;
   }
 });
-//
-//
-//
 
+function startTimer(currentTime) {
+  currentTime = currentTimeSet[0];
+  countDown = setInterval(function () {
+    let min = Math.floor(currentTime / 60);
+    let sec = currentTime % 60;
+    min = min < 10 ? '0' + min : min;
+    sec = sec < 10 ? '0' + sec : sec;
+    countdownEl.innerHTML = `${min}:${sec}`;
+    currentTimeSet.splice(0, 1, currentTime);
+    currentTime--;
+    saveTime();
+    if (min == 0 && sec == 0) {
+      clearInterval(countDown);
+      audio.play();
+      audio.volume = 0.2;
+      btn.checked = false;
+      setTimeout(() => {
+        currentTime = startTimeSet[0].timeSec;
+        let min = Math.floor(currentTime / 60);
+        let sec = currentTime % 60;
+        min = min < 10 ? '0' + min : min;
+        sec = sec < 10 ? '0' + sec : sec;
+        countdownEl.innerHTML = `${min}:${sec}`;
+        currentTimeSet.splice(0, 1, currentTime);
+        saveTime();
+        btn.checked = false;
+        number++;
+        numb.innerHTML = `${number} `;
+        localStorage.setItem('todayCount', `${number}`);
+      }, 1800);
+    }
+  }, 1000);
+  fifteen.disabled = true;
+  thirty.disabled = true;
+  fortyFive.disabled = true;
+}
+
+function resetEvent() {
+  resetBtn.addEventListener('click', () => {
+    let timeMin = startTimeSet[0].time;
+    clearInterval(countDown);
+    saveTime();
+    countdownEl.innerText = `${timeMin}:00`;
+    fifteen.disabled = false;
+    thirty.disabled = false;
+    fortyFive.disabled = false;
+    btn.checked = false;
+    resetBtn.blur();
+  });
+}
 function loadStartTime() {
   const loadedStartTime = localStorage.getItem(startTime);
   const loadedCurrentTime = localStorage.getItem(currentTime);
