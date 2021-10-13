@@ -196,7 +196,7 @@ body {
   position: relative;
   display: inline-block;
   width: 55px;
-  height: 29px;
+  height: 30px;
 }
 
 .switch-button input {
@@ -227,8 +227,8 @@ body {
   padding-left: 4px;
   padding-bottom: 1px;
   box-sizing: border-box;
-  height: 19px;
-  width: 19px;
+  height: 20px;
+  width: 20px;
   left: 5px;
   bottom: 5px;
   background-color: #ffec99;
@@ -236,6 +236,25 @@ body {
   transition: 0.4s;
   border-radius: 20px;
   border: 2px solid #fcc419;
+}
+
+.onoff-switch:after {
+  font-family: 'Material Icons outlined';
+  content: '\e518';
+  color: #fcc419;
+  position: absolute;
+  width: 15px;
+  top: 7px;
+  right: 8px;
+  transform: rotateZ(-15deg);
+}
+
+.switch-button input:checked + .onoff-switch:after {
+  content: '해';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
 }
 
 .switch-button input:checked + .onoff-switch {
