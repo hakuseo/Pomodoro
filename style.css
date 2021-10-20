@@ -285,6 +285,15 @@ body {
   .todayCounting {
     font-size: 13px;
   }
+
+  .switch-button input:checked + .onoff-switch:after {
+    -webkit-transform: translateX(-28px);
+    -ms-transform: translateX(-28px);
+    transform: translateX(-28px);
+    content: '\f03d';
+    font-size: 17px;
+    color: #b5beca;
+  }
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {
