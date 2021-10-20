@@ -251,9 +251,9 @@ body {
 }
 
 .switch-button input:checked + .onoff-switch:after {
-  -webkit-transform: translateX(-26px);
-  -ms-transform: translateX(-26px);
-  transform: translateX(-26px);
+  -webkit-transform: translateX(-27px);
+  -ms-transform: translateX(-27px);
+  transform: translateX(-27px);
   content: '\f03d';
   font-size: 17px;
   color: #b5beca;
@@ -265,9 +265,9 @@ body {
 }
 
 .switch-button input:checked + .onoff-switch:before {
-  -webkit-transform: translateX(22px);
-  -ms-transform: translateX(22px);
-  transform: translateX(22px);
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
   background-color: #646d7a;
   border: 2px solid #fff;
 }
@@ -306,39 +306,5 @@ body {
 
   .todayCounting {
     font-size: 20px;
-  }
-
-  .switch-button {
-    width: 50px;
-    height: 27px;
-  }
-
-  .onoff-switch:before {
-    padding-left: 1px;
-    padding-bottom: 1px;
-    height: 19px;
-    width: 19px;
-    left: 4px;
-    bottom: 4px;
-  }
-
-  .switch-button input:checked + .onoff-switch:before {
-    -webkit-transform: translateX(22px);
-    -ms-transform: translateX(22px);
-    transform: translateX(22px);
-  }
-  .section > .countdown {
-    font-size: 15vh;
-    font-size: 15vw;
-  }
-}
-
-@media all and (min-width: 1025px) {
-  .todayCounting {
-    font-size: 21px;
-  }
-  .section > .countdown {
-    font-size: 11vh;
-    font-size: 11vw;
   }
 }
