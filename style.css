@@ -1,13 +1,13 @@
 :root,
 :root[color-theme='light'] {
   /* color */
-  --background: #e9ecef;
+  --background: #f1f3f5;
   --mainColor: #343a40;
   --subColor: #a2aab2;
   --shadowColor: #bac0c6;
   --borderColor: #adb5bd;
-  --input-shadow: -1px -1px 4px #fff, 2px 2px 5px var(--shadowColor);
-  --input-checked-shadow: -1px -1px 4px #fff, 2px 2px 5px var(--shadowColor),
+  --input-shadow: -1px -1px 4px #fff, 2px 2px 4px var(--shadowColor);
+  --input-checked-shadow: -1px -1px 4px #fff, 2px 2px 4px var(--shadowColor),
     inset 2px 2px 5px #d0d6dcf5, inset 4px 4px 3px var(--background);
 
   /* font */
@@ -24,8 +24,8 @@
   --subColor: #acb4bc;
   --shadowColor: #868e96;
   --borderColor: #ced4da;
-  --input-shadow: -1px -1px 2px #4c5458cc, 2px 2px 5px #212529a8;
-  --input-checked-shadow: -1px -1px 2px #4c5458cc, 2px 2px 5px #212529a8,
+  --input-shadow: -1px -1px 2px #4c5458cc, 2px 2px 4px #212529a8;
+  --input-checked-shadow: -1px -1px 2px #4c5458cc, 2px 2px 4px #212529a8,
     inset 2px 2px 4px #212529a8, inset 4px 4px 3px var(--background);
 }
 
@@ -195,7 +195,7 @@ body {
 .switch-button {
   position: relative;
   display: inline-block;
-  width: 55px;
+  width: 56px;
   height: 30px;
 }
 
@@ -206,6 +206,9 @@ body {
 }
 
 .onoff-switch {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -224,8 +227,6 @@ body {
   align-items: center;
   position: absolute;
   content: '';
-  padding-left: 4px;
-  padding-bottom: 1px;
   box-sizing: border-box;
   height: 20px;
   width: 20px;
@@ -239,22 +240,23 @@ body {
 }
 
 .onoff-switch:after {
+  display: flex;
+  padding-right: 6px;
+  padding-bottom: 1px;
+  flex-direction: row-reverse;
   font-family: 'Material Icons outlined';
   content: '\e518';
-  color: #fcc419;
-  position: absolute;
-  width: 15px;
-  top: 7px;
-  right: 8px;
-  transform: rotateZ(-15deg);
+  color: #fab005;
+  font-size: 16px;
 }
 
 .switch-button input:checked + .onoff-switch:after {
-  content: '해';
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  opacity: 0;
+  -webkit-transform: translateX(-22px);
+  -ms-transform: translateX(-22px);
+  transform: translateX(-22px);
+  content: '\f03d';
+  font-size: 17px;
+  color: #b5beca;
 }
 
 .switch-button input:checked + .onoff-switch {
@@ -263,17 +265,10 @@ body {
 }
 
 .switch-button input:checked + .onoff-switch:before {
-  -webkit-transform: translateX(23px);
-  -ms-transform: translateX(23px);
-  transform: translateX(23px);
-  box-sizing: border-box;
-}
-
-.switch-button input:checked + .onoff-switch:before {
-  -webkit-transform: translateX(25px);
-  -ms-transform: translateX(25px);
-  transform: translateX(25px);
-  background-color: #616976;
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+  background-color: #646d7a;
   border: 2px solid #fff;
 }
 
@@ -328,24 +323,17 @@ body {
   }
 
   .switch-button input:checked + .onoff-switch:before {
-    -webkit-transform: translateX(23px);
-    -ms-transform: translateX(23px);
-    transform: translateX(23px);
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
   }
   .section > .countdown {
     font-size: 15vh;
     font-size: 15vw;
   }
-  /* 사용자 해상도가 768px 이상이고 1024px 이하일 때 이 코드가 실행됨.
-  
-  아이패드 또는 비교적 작은 해상도의 랩탑이나 데스크톱에 대응하는 코드를 작성한다. */
 }
 
 @media all and (min-width: 1025px) {
-  /* 사용자 해상도가 1025px 이상일 때 이 코드가 실행됨.
-  
-  1025px 이상의 이상의 랩탑 또는 데스크탑에 대응하는 코드를 작성한다. */
-
   .todayCounting {
     font-size: 21px;
   }
@@ -354,88 +342,3 @@ body {
     font-size: 11vw;
   }
 }
-
-/* .toggle-checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.toggle-slot {
-  position: relative;
-  height: 1.6em;
-  width: 3.2em;
-  border: 2px solid #e4e7ec;
-  border-radius: 10em;
-  background-color: white;
-  box-shadow: 0px 0px 5px #e4e7ec;
-  transition: background-color 250ms;
-}
-
-.toggle-checkbox:checked ~ .toggle-slot {
-  background-color: #374151;
-}
-
-.toggle-button {
-  transform: translate(1.6em, 0.12em);
-  position: absolute;
-  height: 1.4em;
-  width: 1.4em;
-  border-radius: 50%;
-  background-color: #ffeccf;
-  box-shadow: inset 0px 0px 0px 0.1em #ffbb52;
-  transition: background-color 250ms, border-color 250ms,
-    transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
-}
-
-.toggle-checkbox:checked ~ .toggle-slot .toggle-button {
-  background-color: #485367;
-  box-shadow: inset 0px 0px 0px 0.1em white;
-  transform: translate(1.6em, 0.1em);
-}
-
-.sun-icon {
-  position: absolute;
-  height: 1.2em;
-  width: 1.2em;
-  color: #ffbb52;
-}
-
-.sun-icon-wrapper {
-  position: absolute;
-  height: 1.5em;
-  width: 1.5em;
-  opacity: 1;
-  transform: translate(0em, 0.12em) rotate(15deg);
-  transform-origin: 50% 50%;
-  transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
-}
-
-.toggle-checkbox:checked ~ .toggle-slot .sun-icon-wrapper {
-  opacity: 0;
-  transform: translate(1em, 3em) rotate(0deg);
-}
-
-.moon-icon {
-  position: absolute;
-  height: 1.5em;
-  width: 1.5em;
-  color: white;
-}
-
-.moon-icon-wrapper {
-  position: absolute;
-  height: 1.5em;
-  width: 1.5em;
-  opacity: 0;
-  transform: translate(11em, 2em) rotate(0deg);
-  transform-origin: 50% 50%;
-  transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2.5, 0.46, 0.71);
-}
-
-.toggle-checkbox:checked ~ .toggle-slot .moon-icon-wrapper {
-  opacity: 1;
-  transform: translate(0em, 0.1em) rotate(-15deg);
-} */
