@@ -251,9 +251,9 @@ body {
 }
 
 .switch-button input:checked + .onoff-switch:after {
-  -webkit-transform: translateX(-22px);
-  -ms-transform: translateX(-22px);
-  transform: translateX(-22px);
+  -webkit-transform: translateX(-26px);
+  -ms-transform: translateX(-26px);
+  transform: translateX(-26px);
   content: '\f03d';
   font-size: 17px;
   color: #b5beca;
