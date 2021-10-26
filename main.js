@@ -3,13 +3,10 @@ const resetBtn = document.querySelector('.reset');
 const meatballs = document.querySelector('.meatballs');
 const navBar = document.querySelector('.nav-bar');
 const countdownEl = document.querySelector('.countdown');
-const startBtn = document.querySelector('.start');
-const pauseBtn = document.querySelector('.pause');
 const audio = document.querySelector('.audio');
 const fifteen = document.getElementById(15);
 const thirty = document.getElementById(30);
 const fortyFive = document.getElementById(45);
-const onOff = document.querySelector('onoff-switch:before');
 const numb = document.querySelector('.numb');
 const startTime = 'startTimeSet';
 const currentTime = 'currentTimeSet';
@@ -90,11 +87,11 @@ const getTodayCount = localStorage.getItem('todayCount');
 let number = getTodayCount;
 numb.innerHTML = `${number} `;
 
-setInterval(a, 3000);
+setInterval(timeReset, 3000);
 
 const test = document.querySelector('.test');
 
-function a() {
+function timeReset() {
   let date = new Date();
   let hours = date.getHours();
   let minutes = date.getMinutes();
