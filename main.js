@@ -109,68 +109,6 @@ function a() {
 
 let countDown;
 
-// window.addEventListener('keydown', (e) => {
-//   if (e.code === 'Space') {
-//     if (!btn.checked) {
-//       btn.checked = true;
-//       startTimer();
-//       function startTimer(currentTime) {
-//         currentTime = currentTimeSet[0];
-//         countDown = setInterval(function () {
-//           let min = Math.floor(currentTime / 60);
-//           let sec = currentTime % 60;
-//           min = min < 10 ? '0' + min : min;
-//           sec = sec < 10 ? '0' + sec : sec;
-//           countdownEl.innerHTML = `${min}:${sec}`;
-//           currentTimeSet.splice(0, 1, currentTime);
-//           currentTime--;
-//           saveTime();
-//           if (min == 0 && sec == 0) {
-//             clearInterval(countDown);
-//             audio.play();
-//             audio.volume = 0.2;
-//             setTimeout(() => {
-//               currentTime = startTimeSet[0].timeSec;
-//               let min = Math.floor(currentTime / 60);
-//               let sec = currentTime % 60;
-//               min = min < 10 ? '0' + min : min;
-//               sec = sec < 10 ? '0' + sec : sec;
-//               countdownEl.innerHTML = `${min}:${sec}`;
-//               currentTimeSet.splice(0, 1, currentTime);
-//               saveTime();
-//               btn.checked = false;
-//               number++;
-//               numb.innerHTML = `${number} `;
-//               localStorage.setItem('todayCount', `${number}`);
-//             }, 1800);
-//           }
-//         }, 1000);
-//       }
-//       resetBtn.addEventListener('click', () => {
-//         btn.checked = false;
-//         let timeMin = startTimeSet[0].time;
-//         clearInterval(countDown);
-//         saveTime();
-//         countdownEl.innerText = `${timeMin}:00`;
-//         fifteen.disabled = false;
-//         thirty.disabled = false;
-//         fortyFive.disabled = false;
-//       });
-//       fifteen.disabled = true;
-//       thirty.disabled = true;
-//       fortyFive.disabled = true;
-//     } else {
-//       console.log(btn.checked);
-//       btn.checked = false;
-//       console.log(btn.checked);
-//       clearInterval(countDown);
-//       fifteen.disabled = false;
-//       thirty.disabled = false;
-//       fortyFive.disabled = false;
-//     }
-//   }
-// });
-
 window.addEventListener('keydown', (e) => {
   if (e.code === 'Space') {
     if (!btn.checked) {
@@ -288,38 +226,3 @@ function init() {
 }
 
 init();
-
-//   if ((keyCode = 'Space')) {
-//     let startBtnVisible = window.getComputedStyle(startBtn).visibility;
-//     let pauseBtnVisible = window.getComputedStyle(pauseBtn).visibility;
-//     if (startBtnVisible === 'visible') {
-//       setTimeout(() => {
-//         startTimer();
-//       }, 0);
-
-//     } else {
-//       setTimeOu
-//       startBtn.style.visibility = 'visible';
-//       pauseBtn.style.visibility = 'hidden';
-//       fifteen.disabled = false;
-//       thirty.disabled = false;
-//       fortyFive.disabled = false;
-//     }
-//   }
-// });
-// document.addEventListener('DOMContentLoaded', function () {});
-
-// let timer = 0;
-// let timeId;
-// const h1 = document.querySelector('h1');
-// const checkbox = document.querySelector('.test');
-// checkbox.addEventListener('change', (e) => {
-//   if (e.currentTarget.checked) {
-//     timeId = setInterval(function () {
-//       timer += 1;
-//       h1.textContent = `${timer}초`;
-//     }, 1000);
-//   } else {
-//     clearInterval(timeId);
-//   }
-// });
