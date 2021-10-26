@@ -316,7 +316,7 @@ body {
 
 @media all and (min-width: 1025px) {
   .section > .countdown {
-    font-size: 15vh;
-    font-size: 15vw;
+    font-size: 14vh;
+    font-size: 14vw;
   }
 }
