@@ -292,6 +292,11 @@ body {
     margin: 100px 50px;
   }
 
+  .section > .countdown {
+    font-size: 18vh;
+    font-size: 18vw;
+  }
+
   .reset {
     font-size: 20px;
     padding: 0 7px;
@@ -306,5 +311,12 @@ body {
 
   .todayCounting {
     font-size: 20px;
+  }
+}
+
+@media all and (min-width: 1025px) {
+  .section > .countdown {
+    font-size: 15vh;
+    font-size: 15vw;
   }
 }
