@@ -165,6 +165,9 @@ function startTimer(currentTime) {
         number++;
         numb.innerHTML = `${number} `;
         localStorage.setItem('todayCount', `${number}`);
+        fifteen.disabled = false;
+        thirty.disabled = false;
+        fortyFive.disabled = false;
       }, 1800);
     }
   }, 1000);
