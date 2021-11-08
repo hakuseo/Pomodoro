@@ -91,6 +91,7 @@ setInterval(timeReset, 3000);
 
 const test = document.querySelector('.test');
 
+// timer completed 자정 지나면 초기화
 function timeReset() {
   let date = new Date();
   let hours = date.getHours();
@@ -143,9 +144,9 @@ function startTimer(currentTime) {
     let sec = currentTime % 60;
     min = min < 10 ? '0' + min : min;
     sec = sec < 10 ? '0' + sec : sec;
+    currentTime--;
     countdownEl.innerHTML = `${min}:${sec}`;
     currentTimeSet.splice(0, 1, currentTime);
-    currentTime--;
     saveTime();
     if (min == 0 && sec == 0) {
       clearInterval(countDown);
@@ -189,6 +190,7 @@ function resetEvent() {
     resetBtn.blur();
   });
 }
+
 function loadStartTime() {
   const loadedStartTime = localStorage.getItem(startTime);
   const loadedCurrentTime = localStorage.getItem(currentTime);
