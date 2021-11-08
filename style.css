@@ -151,8 +151,8 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  font-size: 18vh;
-  font-size: 18vw;
+  font-size: 16vh;
+  font-size: 16vw;
   color: var(--mainColor);
   margin: 20px 0;
 }
@@ -293,8 +293,8 @@ body {
   }
 
   .section > .countdown {
-    font-size: 18vh;
-    font-size: 18vw;
+    font-size: 16vh;
+    font-size: 16vw;
   }
 
   .reset {
@@ -316,7 +316,7 @@ body {
 
 @media all and (min-width: 1025px) {
   .section > .countdown {
-    font-size: 14vh;
-    font-size: 14vw;
+    font-size: 12vh;
+    font-size: 12vw;
   }
 }
